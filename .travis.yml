@@ -1,5 +1,14 @@
-sudo: false
 language: ruby
+cache: bundler
 rvm:
-  - 2.3.0
-before_install: gem install bundler -v 1.13.6
+- 2.2.3
+- 2.3.0
+deploy:
+  provider: rubygems
+  api_key:
+    secure: OqP4mw3CcN6enRdizAKTfnlQjn4aAJcgb9/Cel2pHFXvSQ7+aDdeAcUxbmbpALnS5cl1Qp7v5ysseUmTdOMyv4PHmGiUnLimyNIfECRP57I8l7o/z07S+KP4BcmEwrS8P/OgaWbboTEkqU+aa9caCGtVCVjeEPb6750E0YnPCpU=
+  gem:
+    master: avocado-redis
+  on:
+    repo: metova/avocado-redis
+    branch: master
