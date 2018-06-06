@@ -8,6 +8,10 @@ describe Avocado::Redis::Strategy do
       redis['notme'] = Hash[test: 3].to_json
       expect(subject.read.map { |h| h['test'] }).to match_array [1, 2]
     end
+
+    it 'doesnt crash when the keys are empty' do
+      expect(subject.read).to be_empty
+    end
   end
 
   describe '#write' do

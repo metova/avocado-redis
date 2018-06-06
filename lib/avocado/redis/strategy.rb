@@ -8,6 +8,7 @@ module Avocado
       end
 
       def read
+        return [] if keys.empty?
         redis.mget(*keys).map do |value|
           JSON.parse value
         end
@@ -25,7 +26,7 @@ module Avocado
 
       private
         def keys
-          redis.scan_each(match: 'avocado-*').to_a.uniq
+          @keys ||= redis.scan_each(match: 'avocado-*').to_a.uniq
         end
     end
   end
