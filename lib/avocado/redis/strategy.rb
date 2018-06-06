@@ -26,7 +26,7 @@ module Avocado
 
       private
         def keys
-          @keys ||= redis.scan_each(match: 'avocado-*').to_a.uniq
+          redis.scan_each(match: 'avocado-*').to_a.uniq
         end
     end
   end
