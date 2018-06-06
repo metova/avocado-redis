@@ -16,7 +16,7 @@ module Avocado
 
       def write(data, upload_id)
         key = "avocado-#{Time.current.to_s(:nsec)}-#{upload_id}"
-        redis[key] = data.to_json
+        redis.set key, data.to_json
       end
 
       def purge_old(upload_id)
